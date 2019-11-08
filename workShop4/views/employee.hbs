@@ -1,0 +1,205 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{employee.firstName}} {{ employee.lastName}} - Employee: {{ employee.employeeNum}}</h2>
+        <hr />
+        <form method="post" action="/employee/update">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input class="form-control" id="firstName" name="firstName" type="text"
+                                value="{{ employee.firstName}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input class="form-control" id="lastName" name="lastName" type="text"
+                                value="{{ employee.lastName}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input class="form-control" id="email" name="email" type="email"
+                                value="{{ employee.email}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Social Security Number">Social Security Number:</label>
+                            <input class="form-control" id="SSN" name="SSN" type="text" value="{{ employee.SSN}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Address (Street)">Address (Street):</label>
+                            <input class="form-control" id="addressStreet" name="addressStreet" type="text"
+                                value="{{ employee.addressStreet}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Address (City)">Address (City):</label>
+                            <input class="form-control" id="addressCity" name="addressCity" type="text"
+                                value="{{ employee.addressCity}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Address (State)">Address (State):</label>
+                            <input class="form-control" id="addressState" name="addressState" type="text"
+                                value="{{ employee.addressState}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Address (Zip Code)">Address (Zip Code):</label>
+                            <input class="form-control" id="addressPostal" name="addressPostal" type="text"
+                                value="{{ employee.addressPostal}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                    <legend>Company Information</legend>
+                    </div>
+                    {{#if employee.isManager}}
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Manager">Manager:</label>
+                            <input class="form-control" id="isManager" name="isManager" type="checkBox" checked=checked />
+                            {{else}}
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Manager">Manager:</label>
+                                    <input class="form-control" id="isManager" name="isManager" type="checkBox" />
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Employee's Manager Number">Employee's Manager Number:</label>
+                                    <input class="form-control" id="employeeManagerNum" name="employeeManagerNum"
+                                        type="text" value="{{ employee.employeeManagerNum}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Status">Status:</label><br />
+                                    {{#equal employee.status "Full Time"}}
+                                    <label class="checkbox-inline">
+                                        <input id="radio" name="status" type="radio" value="Full Time" checked=checked />
+                                        Full Time
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input id="radio" name="status" type="radio" value="Part Time" /> Part Time
+                                    </label>
+                                    {{else}}
+                                    <label class="checkbox-inline">
+                                        <input id="radio" name="status" type="radio" value="Full Time" /> Full Time
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input id="radio" name="status" type="radio" value="Part Time" checked=checked />
+                                        Part Time
+                                    </label>
+                                    {{/equal}}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="department">Department: </label><br />
+                                    {{#equal employee.department "1"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices" selected=selected>Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "2"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment" selected=selected>Product Development
+                                        </option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "3"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing" selected=selected>Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "4"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning" selected=selected>Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "5"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting" selected=selected>Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "6"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources" selected=selected>Human Resources</option>
+                                        <option value="QualityAnalysis">Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                    {{#equal employee.department "7"}}
+                                    <select class="form-control">
+                                        <option value="CreativeServices">Creating Services</option>
+                                        <option value="ProductDevelopment">Product Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="StrategicPlanning">Strategic Planning</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="HumanResources">Human Resources</option>
+                                        <option value="QualityAnalysis" selected=selected>Quality Analysis</option>
+                                    </select>
+                                    {{/equal}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Hire Date">Hire Date:</label>
+                                    <input class="form-control" id="email" name="hireDate" type="text"
+                                        value="{{ employee.hireDate}}" />
+                                </div>
+                            </div>
+                        </div>
+            </fieldset>
+            <hr />
+            <input type="submit" class="btn btn-primary pull-right" value="Update Employee" /><br /><br /><br />
+        </form>
+    </div>
+</div>

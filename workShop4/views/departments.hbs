@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        
+        <h2>Departments</h2>
+        <br><br>
+
+        {{#unless departments}}
+        <div class="col-md-12 text-center">
+            <strong>{{message}}</strong>
+        </div>
+        {{/unless}}
+
+        <div class="table_responsive">
+            <table class="table">
+
+                <tr>
+                    <th>Department Number</th>
+                    <th>Department Name</th>
+                </tr>
+
+                {{#each departments}}
+                <tr>
+                    {{!-- Note: if you click on either the department id, or the department name, you'll be redirected 
+                    to /employees?department=X, where X is the department number for the department that was clicked --}}
+                    <td><a href="/employees?department={{departmentId}}">{{departmentId}}</a></td>
+                    <td><a href="/employees?department={{departmentName}}">{{departmentName}}</a></td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>
