@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Images
+            <a href="/images/add" class="btn btn-success pull-right">Add New Image</a>
+        </h2>
+        <hr />
+        {{#unless images}}
+        <div class="col-md-12 text-center">
+            <strong>No Images Available</strong>
+        </div>
+        {{/unless}}
+
+        {{#each images}}
+        <div class="col-md-4">
+            {{!-- NOTE: you can use {{this}} within the loop to get the current value of the item in the array of strings 
+            (this will be the filename of the current image, ie: "1518186273491.jpg") --}}
+            <img src="/images/uploaded/{{this}}" class="img-responsive img-thumbnail" />
+            {{!-- Note the classes "img-responsive" and "img-thumbnail".  --}}
+            {{!-- These are simply bootstrap classes that correctly scale and decorate the image with a border. --}}
+        </div>
+        {{/each}}
+
+
+    </div>
+</div>
